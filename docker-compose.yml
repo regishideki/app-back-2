@@ -4,7 +4,7 @@ services:
   db:
     image: postgres
     volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+      - db-data:/var/lib/postgresql/data
   web:
     build: .
     command: bundle exec rails s -p 4000 -b '0.0.0.0'
@@ -14,3 +14,5 @@ services:
       - '4000:4000'
     depends_on:
       - db
+volumes:
+  db-data:
